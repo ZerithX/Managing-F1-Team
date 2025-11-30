@@ -105,6 +105,9 @@ async function addDriver(nama, team, nomor, points) {
 async function addTeamPrincipal(nama, team, negara) {
   validateTeamPrincipalInput(nama, team, negara);
 
+  if (dataTeamPrincipal.some(t => t.team.toLowerCase() === team.toLowerCase())) {
+    throw new Error("Team Principal for this team already exists");
+}
   const year = new Date().getFullYear().toString().slice(-2);
   const roleCode = "101";
   const sameYearData = dataTeamPrincipal.filter(item => String(item.id).startsWith(year));
@@ -145,6 +148,13 @@ async function updateTeamPrincipal(id, newTeam, newNegara) {
   if (teamPrincipalIndex === -1) {
     throw new Error("Team Principal not found");
   }
+  if (
+  dataTeamPrincipal.some(
+    t => t.team.toLowerCase() === newTeam.toLowerCase() && t.id != id
+  )
+) {
+  throw new Error("Team Principal for this team already exists");
+}
 
   dataTeamPrincipal[teamPrincipalIndex].team = newTeam;
   dataTeamPrincipal[teamPrincipalIndex].negara = newNegara;
