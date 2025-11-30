@@ -108,11 +108,11 @@ async function addDriverController(req, res) {
 
 async function updateDriverController(req, res) {
     try {
-        if (!req.body.team && !req.body.nomor) {
-            return res.status(400).json({ message: "Update harus diisi team atau nomor" });
+        if (!req.body.team && !req.body.nomor && !req.body.points) {
+            return res.status(400).json({ message: "Update harus diisi team, nomor, atau points" });
         }
 
-        const updated = await updateDriver(Number(req.params.id), req.body.team, req.body.nomor);
+        const updated = await updateDriver(Number(req.params.id), req.body.team, req.body.nomor, req.body.points);
         res.status(200).json(updated);
     } catch (error) {
         res.status(404).json({ message: error.message });

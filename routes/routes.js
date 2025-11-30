@@ -20,11 +20,11 @@ import {
 const router = express.Router();
 
 router.get("/drivers", getAllDriversController);
-router.get("/drivers/filter", filterDriversController);
+router.get("/drivers", filterDriversController);
 router.get("/drivers/:id", getDriverByIdController);
 
 router.get("/teamprincipals", getAllTeamPrincipalsController);
-router.get("/teamprincipals/filter", filterTeamPrincipalsController);
+router.get("/teamprincipals", filterTeamPrincipalsController);
 router.get("/teamprincipals/:id", getTeamPrincipalByIdController);
 
 router.post('/drivers', addDriverController);

@@ -133,17 +133,18 @@ async function addTeamPrincipal(nama, team, negara) {
   return newTeamPrincipal;
 }
 
-async function updateDriver(id, newTeam, newNomor) {
+async function updateDriver(id, newTeam, newNomor, newPoints) {
   const driverIndex = dataDriver.findIndex(d => d.id == id);
-  if (driverIndex === -1) throw new Error("Driver not found");
+  if (driverIndex == -1) throw new Error("Driver not found");
   if (
-    dataDriver.some(d => d.nomor === newNomor && d.id != id)
+    dataDriver.some(d => d.nomor == newNomor && d.id != id)
   ) {
     throw new Error("Driver number already used by another driver");
   }
 
   dataDriver[driverIndex].team = newTeam;
   dataDriver[driverIndex].nomor = newNomor;
+  dataDriver[driverIndex].points = newPoints;
   dataDriver[driverIndex].updatedAt = new Date();
 
   return dataDriver[driverIndex];
