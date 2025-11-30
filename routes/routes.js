@@ -19,12 +19,12 @@ import {
 
 const router = express.Router();
 
-router.get("/drivers", filterDriversController); // QUERY PARAM
-router.get("/drivers/all", getAllDriversController);
+router.get("/drivers/filter", filterDriversController);
+router.get("/drivers", getAllDriversController);
 router.get("/drivers/:id", getDriverByIdController);
 
-router.get("/teamprincipals", filterTeamPrincipalsController);
-router.get("/teamprincipals/all", getAllTeamPrincipalsController);
+router.get("/teamprincipals/filter", filterTeamPrincipalsController);
+router.get("/teamprincipals", getAllTeamPrincipalsController);
 router.get("/teamprincipals/:id", getTeamPrincipalByIdController);
 
 router.post('/drivers', addDriverController);
