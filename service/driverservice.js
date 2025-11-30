@@ -1,5 +1,11 @@
 import { dataDriver, dataTeamPrincipal } from "../data.js";
 
+
+function validateDriverInput(nama, team, nomor, points) {
+  if (!nama || !team || !nomor) {
+    throw new Error("All fields (nama, team, nomor) are required");
+  }
+}
 function validateTeamPrincipalInput(nama, team, negara) {
   if (!nama || !team || !negara) {
     throw new Error("All fields (nama, team, negara) are required");
